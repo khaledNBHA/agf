@@ -15,6 +15,6 @@ AGF introduces a topological foundation for AI safety. By modeling foundational 
 
 ### Installation
 ```bash
-git clone [https://github.com/YourAnonymousAccount/AGF_Project.git](https://github.com/YourAnonymousAccount/AGF_Project.git)
-cd AGF_Project
+git clone https://anonymous.4open.science/git/agf-6C2E
+cd agf-6C2E
 pip install -r requirements.txt
