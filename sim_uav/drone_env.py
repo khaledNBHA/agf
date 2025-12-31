@@ -1,31 +1,26 @@
 import torch
-import numpy as np
 
 class UAVAxiomaticEnv:
     """
     UAV Simulation Environment for Safety-Critical Navigation.
-    The goal is to maintain a stable hover despite severe sensor noise (Shakk).
+    Designed to test Epistemic Drift (Shakk) under extreme sensor noise.
     """
-    def __init__(self, state_dim=12, safety_threshold=1.0):
+    def __init__(self, state_dim=12):
         self.state_dim = state_dim
-        self.safety_threshold = safety_threshold
-        # The Axiomatic Safe State (Perfect Hover)
+        # Target: Stable hover at 5 meters altitude
         self.safe_state = torch.zeros(state_dim)
-        self.safe_state[2] = 5.0  # Target altitude: 5 meters
+        self.safe_state[2] = 5.0 
         
-    def get_stochastic_observation(self, true_state, noise_level=2.0):
+    def get_stochastic_observation(self, true_state, sigma=1.0):
         """
-        Adds high-entropy Gaussian noise to the state.
-        Represents 'Shakk' (Doubt/Uncertainty).
+        Generates a perturbed observation representing 'Shakk'.
         """
-        noise = torch.randn(self.state_dim) * noise_level
+        noise = torch.randn_like(true_state) * sigma
         return true_state + noise
 
-    def compute_hjb_loss(self, state):
+    def evaluate_safety_violation(self, state):
         """
-        Simplified Hamilton-Jacobi-Bellman penalty for safety violation.
+        Measures the deviation from the Axiomatic safety zone.
         """
-        altitude = state[2]
-        if altitude < self.safety_threshold:
-            return torch.tensor(100.0, requires_grad=True)
-        return torch.norm(state - self.safe_state, p=2)
+        altitude_error = torch.abs(state[2] - self.safe_state[2])
+        return altitude_error.item()
