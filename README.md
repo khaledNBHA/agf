@@ -1,21 +1,20 @@
-# Axiomatic Gravity Framework (AGF)
+# Axiomatic Gravity Framework (AGF) - Official Implementation
 
-This repository provides the official implementation of the **Axiomatic Gravity Framework**, a Riemannian approach to epistemic persistence in autonomous systems.
+This repository contains the source code for the paper:  
+**"Axiomatic Gravity: Riemannian Geometry as a Foundation for Epistemic Persistence in Autonomous Systems"** *Submitted to IEEE WCCI 2026 (IJCNN).*
 
-## Overview
-AGF transitions from linguistic guardrails to a **topological foundation** for AI safety. By modeling foundational certainty (*Yaqin*) as gravitational singularities on an information manifold, we ensure structural resilience against high-entropy perturbations (*Shakk*).
+## 📌 Abstract
+AGF introduces a topological foundation for AI safety. By modeling foundational constraints as gravitational wells on a Riemannian manifold, we prevent "Epistemic Drift" (Shakk) in autonomous agents under extreme uncertainty.
 
-## Key Components
-1. **Riemannian Attention Mechanism (RAM)**: Anchors latent states to axiomatic wells using metric-gated weights.
-2. **Object-Proof Consensus (OPC)**: Logic for decentralized axiomatic mass calculation (simulated).
-3. **Metric-Gated Optimizer**: A custom optimizer that dissipates gradients failing to reach escape velocity $M_A$.
+## 📊 Visual Results
+### The Axiomatic Well & Trajectories
+![Manifold Analysis](figures/well_3d.png)
+*Figure 1: 3D Visualization of the Yaqin potential field anchoring the agent's state.*
 
-## Quick Start
-```python
-from agf_core import RiemannianAttention
+## 🚀 Getting Started
 
-# Initialize the anchor
-ram_layer = RiemannianAttention(d_model=128, beta=2.5)
-
-# Forward pass with safety persistence
-safe_latent = ram_layer(input_latent)
+### Installation
+```bash
+git clone [https://github.com/YourAnonymousAccount/AGF_Project.git](https://github.com/YourAnonymousAccount/AGF_Project.git)
+cd AGF_Project
+pip install -r requirements.txt
